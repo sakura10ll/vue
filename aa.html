@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    .wordColor{
+      color:red;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="(m,index) in movies" :class="{wordColor: index == num }" @click="pointer(index)">{{m}}</li>
+  </ul>
+<!-- 50px 必须加 单引号，否则会认为其实是个变量-->
+  <h2 :style="{ fontSize: '20px'}">{{message}}</h2>
+  <div>{{fullName}}</div>
+  <div @click="divClick">
+    aaaa
+    <!--stop修饰符阻止事件冒泡-->
+    <button @click.stop="btnClick">按钮</button>
+  </div>
+  
+</div>
+
+
+</body>
+<script>
+    // 声明式编程
+    new Vue({
+        el: "#app", // 用于挂载要管理的元素
+        data: {  // 定义数据
+            message: "helloWord vue",
+            movies: ['海王', '大话西游', '少年派', '盗梦空间'],
+            num:0,
+            firstName: 'lebron',
+            lastName: 'James'
+        },
+        computed:{   // 计算属性
+          fullName:function () {
+              return this.firstName + ' ' + this.lastName;
+          }
+        },
+        methods: {
+            pointer: function (index) {
+                this.num = index
+            },
+            btnClick:function () {
+                console.info("btnClick");
+            },
+            divClick:function () {
+                console.info('divClick');
+            }
+
+
+        }
+    })
+</script>
+</html>
