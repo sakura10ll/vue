@@ -72,3 +72,26 @@ computed 和 methods 都可以进行计算属性，但是 computed 会进行缓�
 
 v-if
 
+
+v-model 指令用来实现表单元素和数据的双向绑定
+   该指令其实是一个语法糖，其本质上包含两个操作：
+      1.v-bind 绑定一个value属性
+      2.v-on 指令给当前元素绑定input事件
+   例： <input type="text" v-model="message"> 
+        等同于
+        <input type="text" v-bind:value="message" v-on:input="message = $event.target.value">
+
+
+
+修饰符：
+   lazy 修饰符 ：
+         默认情况下，v-model默认在input事件中同步输入框的数据的，一旦数据发生变化，对应的data中的数据就会自动发生过变；
+         lazy 修饰符可以让数据在失去焦点或者回车的时候才会更新。
+   
+   number 修饰符 ：
+         默认情况下，在输入框中我们无论输入字母还是数字，都会被当作字符串类型进行处理；
+         number 修饰符可以让在输入框中输入的内容自动转换为数字类型。
+   
+   trim 修饰符 ：      
+         如果输入的内容首尾有很多空格，通常我们希望将其去除；
+         trim修饰符可以过滤内容左右两边的空格

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+
+  <!-- 单选框 -->
+  <label>
+      <input type="radio" v-model="sex" value="男">男
+  </label>
+  <label>
+      <input type="radio" v-model="sex" value="女">女
+  </label>
+  <h2>你的性别是:{{sex}}</h2>
+  <!-- 单个复选框 -->
+  <label for="check">
+      <input type="checkbox" v-model="checked" id="check">同意协议
+  </label>
+  <h2>是否选中:{{checked}}</h2>
+  <!-- 多个复选框 -->
+  <label><input type="checkbox" v-model="hobby" value="篮球">篮球</label>
+  <label><input type="checkbox" v-model="hobby" value="足球">足球</label>
+  <label><input type="checkbox" v-model="hobby" value="乒乓球">乒乓球</label>
+  <label><input type="checkbox" v-model="hobby" value="台球">台球</label>
+  <h2>你的爱好是:{{hobby}}</h2>
+
+  <!-- 下拉单选框 -->
+  <select v-model="fruit">
+      <option value="苹果">苹果</option>
+      <option value="香蕉">香蕉</option>
+      <option value="榴莲">榴莲</option>
+      <option value="樱桃">樱桃</option>
+  </select>
+  <h2>你的爱好是:{{fruit}}</h2>
+
+  <!-- 下拉多选框 -->
+  <select v-model="fruits" multiple>
+    <option value="苹果">苹果</option>
+    <option value="香蕉">香蕉</option>
+    <option value="榴莲">榴莲</option>
+    <option value="樱桃">樱桃</option>
+  </select>
+  <h2>你的爱好是:{{fruits}}</h2>
+
+</div>
+
+
+</body>
+<script>
+    new Vue({
+        el: "#app", // 用于挂载要管理的元素
+        data: {  // 定义数据
+            message: "helloWord vue",
+            sex:"男",
+            checked:false,
+            hobby:[],
+            fruit:"",
+            fruits:[],
+        },
+        computed:{   // 计算属性
+          
+        },
+        methods: {
+           
+        }
+    })
+</script>
+</html>

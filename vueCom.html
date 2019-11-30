@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <my-cpn></my-cpn>
+    <cpn></cpn>
+</div>
+<template id="cpnC">
+    <div>
+        <h2>标题</h2>
+        <p>内容</p>
+    </div>
+</template>
+<!-- <script type="text/x-template" id="cpnC">
+    <div>
+        <h2>标题</h2>
+        <p>内容</p>
+    </div>
+</script> -->
+<script>
+        const cpnC = Vue.extend({
+            template: `<div>
+                    <h2>标题</h2>
+                    <p>内容</p>
+                </div>`
+        });
+    
+        // Vue.component('my-cpn', cpnC); // 全局组件
+
+        // Vue.component('my-cpn', {
+        //     template: `<div>
+        //             <h2>标题</h2>
+        //             <p>内容</p>
+        //         </div>`
+        // });
+
+
+        Vue.component('my-cpn', {
+            template: "#cpnC"
+            });
+
+        const app = new Vue({
+            el: "#app", // 用于挂载要管理的元素
+            data: {  // 定义数据
+                message: "helloWord vue",
+                age:1,
+                name:"aaa"
+            },
+            components:{ // 局部组件
+                cpn: cpnC
+            },
+            computed:{   // 计算属性
+              
+            },
+            methods: {
+               
+            }
+        })
+    </script>
+
+</body>
+
+</html>
