@@ -70,5 +70,57 @@ computed 和 methods 都可以进行计算属性，但是 computed 会进行缓�
      5. .once修饰符 只触发一次回调
 
 
-v-if
+v-if 与 v-show 的区别：
+   v-if  当条件为false时，包含v-if指令的元素，不会存在于dom元素中
+   v-show 当条件为false时，只是在元素上增加了display:none;
 
+
+v-model 指令用来实现表单元素和数据的双向绑定
+   该指令其实是一个语法糖，其本质上包含两个操作：
+      1.v-bind 绑定一个value属性
+      2.v-on 指令给当前元素绑定input事件
+   例： <input type="text" v-model="message"> 
+        等同于
+        <input type="text" v-bind:value="message" v-on:input="message = $event.target.value">
+
+v-model 的 修饰符：
+   lazy 修饰符 ：
+         默认情况下，v-model默认在input事件中同步输入框的数据的，一旦数据发生变化，对应的data中的数据就会自动发生过变；
+         lazy 修饰符可以让数据在失去焦点或者回车的时候才会更新。
+   
+   number 修饰符 ：
+         默认情况下，在输入框中我们无论输入字母还是数字，都会被当作字符串类型进行处理；
+         number 修饰符可以让在输入框中输入的内容自动转换为数字类型。
+   
+   trim 修饰符 ：      
+         如果输入的内容首尾有很多空格，通常我们希望将其去除；
+         trim修饰符可以过滤内容左右两边的空格
+
+
+Vue 中的组件化：
+   组件的使用分成三个步骤： 
+      1.创建组件构造器；  调用Vue.extend()方法创建组件构造函数
+      2.注册组件；   调用Vue.component()方法注册组件
+      3.使用组件     在Vue实例的作用范围内使用组件    
+
+Vue模版分离写法： 1.script标签实现(type值必须为"text/x-template")    2.template标签实现      
+
+组件不可用访问Vue实例data中的数据。组件内部有自己保存数据的属性data，其内部data属性的值必须是一个函数，而这个函数必须返回一个对象，对象内部保存着数据。
+组件内部data必须是一个函数的原因：每个组件实例都有自己的状态，互不影响。
+
+父传子 props的值有两种方式：
+   1.字符串数组，数组中的字符串就是传递时的名称
+   2.对象，对象可以设置传递时的类型，也可以设置默认值等
+父组件向子组件传值时的参数名不可以用 驼峰标识 。   
+
+子传父 ： 子组件通过this.$emit自定义事件，触发父组件事件；父组件中通过v-on来监听组件事件
+
+父子组件的访问方式：
+   父组件访问子组件：使用 $children 或 $refs
+   子组件访问父组件：使用$parent
+
+slot(插槽):
+   slot-scope="slot"  获取子组件中插槽对象，获取插槽中的数据
+
+
+常见的模块化规范： commonjs  AMD  CMD  ES6的Modules

@@ -23,7 +23,10 @@
     <!--stop修饰符阻止事件冒泡-->
     <button @click.stop="btnClick">按钮</button>
   </div>
-  
+  <!-- v-for 在遍历对象中，若之获取一个值，则获取到的值是value-->
+  <div v-for="item in info">{{item}}</div>
+  <!-- 获取key、value 和 index 的格式： （value, key, index）-->
+  <div v-for="(value, key, index) in info">{{key}}:{{value}}--{{index}}</div>
 </div>
 
 
@@ -37,7 +40,11 @@
             movies: ['海王', '大话西游', '少年派', '盗梦空间'],
             num:0,
             firstName: 'lebron',
-            lastName: 'James'
+            lastName: 'James',
+            info:{
+                name:"aaa",
+                age:'20'
+            }
         },
         computed:{   // 计算属性
           fullName:function () {

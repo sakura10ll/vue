@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    table, thead, th, tr, td{
+      border: 1px solid black;
+      border-spacing: inherit;
+    }
+    thead{
+      background: #aaa;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <div v-if="books.length">
+    <table>
+      <thead>
+      <th></th>
+      <th>书籍名称</th>
+      <th>出版日期</th>
+      <th>价格</th>
+      <th>购买数量</th>
+      <th>操作</th>
+      </thead>
+      <tbody>
+      <tr v-for="(book,index) in books">
+        <td>{{book.id}}</td>
+        <td>{{book.name}}</td>
+        <td>{{book.date}}</td>
+        <td>{{book.price}}</td>
+        <td>
+          <button @click="remove(index)" v-bind:disabled="book.count <=1 ">-</button>
+          {{book.count}}
+          <button  @click="add(index)">+</button>
+        </td>
+        <td>
+          <button @click="del(index)">移除</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <h2>总价{{sum}}</h2>
+  </div>
+  <div v-else>购物车为空</div>
+
+</div>
+
+
+</body>
+<script>
+    // 声明式编程
+    new Vue({
+        el: "#app", // 用于挂载要管理的元素
+        data: {  // 定义数据
+            books:[{
+                id: 1,
+                name: '《算法》',
+                date: '2010-10',
+                price: 50,
+                count: 1
+            },{
+                id: 2,
+                name: '《bbb》',
+                date: '2010-10',
+                price: 50,
+                count: 1
+            },{
+                id: 3,
+                name: '《cc》',
+                date: '2010-10',
+                price: 50,
+                count: 1
+            },{
+                id: 4,
+                name: '《dd》',
+                date: '2010-10',
+                price: 50,
+                count: 1
+            }]
+        },
+        computed:{   // 计算属性
+          sum:function () {
+              return this.books.reduce(function (previousValue,book) {
+                 return previousValue + book.price;
+              },0)
+          }
+        },
+        methods: {
+            remove: function (index) {
+                this.books[index].count --;
+            },
+            add: function (index) {
+                this.books[index].count ++;
+            },
+            del: function (index) {
+                this.books.splice(index,1)
+            }
+
+        }
+    })
+</script>
+</html>
