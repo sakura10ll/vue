@@ -10,6 +10,7 @@
     <my-cpn></my-cpn>
     <cpn></cpn>
 </div>
+<<<<<<< HEAD
 <!-- 两种模版分离的写法 通过id关联 -->
 <template id="cpnC">
     <div>
@@ -18,13 +19,25 @@
     </div>
 </template>
 <!--模版分离写法（类型必须是 "text/x-template"） <script type="text/x-template" id="cpnC">
+=======
+<template id="cpnC">
+    <div>
+        <h2>标题</h2>
+        <p>内容</p>
+    </div>
+</template>
+<!-- <script type="text/x-template" id="cpnC">
+>>>>>>> 331ffe4a352df1c7c940a248af3a3e3e8c0e8fc0
     <div>
         <h2>标题</h2>
         <p>内容</p>
     </div>
 </script> -->
 <script>
+<<<<<<< HEAD
         // 1.创建组件构造器对象
+=======
+>>>>>>> 331ffe4a352df1c7c940a248af3a3e3e8c0e8fc0
         const cpnC = Vue.extend({
             template: `<div>
                     <h2>标题</h2>
@@ -33,9 +46,13 @@
         });
     
         // Vue.component('my-cpn', cpnC); // 全局组件
+<<<<<<< HEAD
         
 
         // 注册组件语法糖，不需要创建组件构造器对象
+=======
+
+>>>>>>> 331ffe4a352df1c7c940a248af3a3e3e8c0e8fc0
         // Vue.component('my-cpn', {
         //     template: `<div>
         //             <h2>标题</h2>
@@ -43,6 +60,7 @@
         //         </div>`
         // });
 
+<<<<<<< HEAD
         // 2.注册组件,其内部data属性必须是一个函数 
         Vue.component('my-cpn', {
             template: "#cpnC",
@@ -51,6 +69,11 @@
                     title: 'abc'
                 }
             }
+=======
+
+        Vue.component('my-cpn', {
+            template: "#cpnC"
+>>>>>>> 331ffe4a352df1c7c940a248af3a3e3e8c0e8fc0
             });
 
         const app = new Vue({
